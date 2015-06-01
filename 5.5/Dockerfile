@@ -28,7 +28,7 @@ RUN yum install -y \
     https://www.softwarecollections.org/en/scls/rhscl/php55/epel-7-x86_64/download/rhscl-php55-epel-7-x86_64.noarch.rpm \
     https://www.softwarecollections.org/en/scls/remi/php55more/epel-7-x86_64/download/remi-php55more-epel-7-x86_64.noarch.rpm && \
     yum install -y --setopt=tsflags=nodocs httpd24 php55 php55-php php55-php-mysqlnd php55-php-pgsql php55-php-bcmath php55-php-devel \
-    php55-php-fpm php55-php-gd php55-php-intl php55-php-ldap php55-php-mbstring php55-php-mcript php55-php-pdo \
+    php55-php-fpm php55-php-gd php55-php-intl php55-php-ldap php55-php-mbstring php55-php-pdo \
     php55-php-pecl-memcache php55-php-process php55-php-soap php55-php-opcache php55-php-xml \
     php55-php-pecl-imagick php55-php-pecl-xdebug && \
     yum clean all -y && \
@@ -37,6 +37,9 @@ RUN yum install -y \
     sed -i -f /opt/openshift/httpdconf.sed /opt/rh/httpd24/root/etc/httpd/conf/httpd.conf && \
     chmod -R og+rwx /opt/rh/php55/root/etc && \
     chmod -R og+rwx /opt/rh/httpd24/root/var/run/httpd
+
+RUN yum install -y https://www.softwarecollections.org/repos/remi/php55more/epel-7-x86_64/php55-php-extras-5.5.6-3.remi/php55-php-mcrypt-5.5.6-3.el7.centos.x86_64.rpm git && \
+    yum clean all -y
 
 USER 1001
 
